@@ -291,7 +291,7 @@
     var LG=['manulife','sun-life','canada-life','ia-financial','desjardins','beneva'];
     var NM={ 'manulife':'Manulife','sun-life':'Sun Life','canada-life':'Canada Life','ia-financial':'iA Financial','desjardins':'Desjardins','beneva':'Beneva' };
     var track=document.getElementById('logo-track'); if(!track) return; var html='';
-    for(var pass=0;pass<2;pass++){ LG.forEach(function(k){ html+='<div class="logo-item"><img src="carriers/'+k+'.png" alt="'+NM[k]+'" loading="lazy"></div>'; }); }
+    for(var pass=0;pass<2;pass++){ LG.forEach(function(k){ html+='<div class="logo-item"><img src="'+k+'.png" alt="'+NM[k]+'" loading="lazy"></div>'; }); }
     track.innerHTML=html;
   })();
 
