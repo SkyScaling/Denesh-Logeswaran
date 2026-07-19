@@ -136,10 +136,9 @@
   .logo-marquee::before,.logo-marquee::after{content:"";position:absolute;top:0;bottom:0;width:clamp(28px,8vw,64px);z-index:2;pointer-events:none}
   .logo-marquee::before{left:0;background:linear-gradient(90deg,#16130C,rgba(22,19,12,0))}
   .logo-marquee::after{right:0;background:linear-gradient(270deg,#16130C,rgba(22,19,12,0))}
-  .logo-track{display:flex;align-items:center;width:max-content;animation:logoscroll 15s linear infinite;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(0)}
+  .logo-track{display:flex;align-items:center;width:max-content;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
   .logo-item{flex:none;padding:0 clamp(24px,4vw,46px)}
   .logo-item img{height:clamp(26px,3.4vw,34px);width:auto;display:block;opacity:0.82;filter:brightness(1.15)}
-  @keyframes logoscroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
   @media (prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logo-item{padding:10px 18px}}
 
   .sec{max-width:1000px;margin:0 auto;padding:clamp(38px,5vw,52px) 22px clamp(46px,6.5vw,68px)}
@@ -297,6 +296,28 @@
     var track=document.getElementById('logo-track'); if(!track) return; var html='';
     for(var pass=0;pass<2;pass++){ LG.forEach(function(k){ html+='<div class="logo-item"><img src="'+k+'.png" alt="'+NM[k]+'" decoding="async"></div>'; }); }
     track.innerHTML=html;
+
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+      track.style.flexWrap='wrap'; track.style.width='auto'; track.style.justifyContent='center'; return;
+    }
+
+    var SPEED=70, offset=0, last=null, half=0, raf=null;
+    function measure(){ half=track.scrollWidth/2; }
+    function step(ts){
+      if(last===null) last=ts;
+      var dt=(ts-last)/1000; last=ts; if(dt>0.1) dt=0.1;
+      if(half>0){ offset+=SPEED*dt; if(offset>=half) offset-=half; track.style.transform='translateX('+(-offset).toFixed(2)+'px)'; }
+      else { measure(); }
+      raf=requestAnimationFrame(step);
+    }
+    function play(){ if(raf===null){ last=null; raf=requestAnimationFrame(step); } }
+    function pause(){ if(raf!==null){ cancelAnimationFrame(raf); raf=null; } }
+
+    track.querySelectorAll('img').forEach(function(im){ im.addEventListener('load', measure); });
+    window.addEventListener('resize', measure);
+    document.addEventListener('visibilitychange', function(){ if(document.hidden) pause(); else play(); });
+    window.addEventListener('pageshow', function(){ measure(); play(); });
+    measure(); play(); setTimeout(measure, 600);
   })();
 
   var P={
