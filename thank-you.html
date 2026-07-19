@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Call Is Booked | DCW Financial</title>
+<meta name="description" content="Your call with DCW Financial is confirmed. Here's what to expect.">
+<meta name="theme-color" content="#16130C">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<!-- ================= CONFIG: EDIT THESE ================= -->
+<script>
+  window.DCW_CONFIG = {
+    LOGO_URL: "logo.png",
+
+    /* ---- THE ADVISOR (keep identical to the booking page) ---- */
+    ADVISOR_NAME: "Lucia Medina",
+    ADVISOR_TITLE: "Licensed Advisor, DCW Financial",
+    ADVISOR_PROOF: "Experior Financial Group  ·  2024 Executive Director Agency  ·  Serving families across Canada",
+    ADVISOR_BIO: "We're all set. On our call I'll walk you through your options in plain language and help you find coverage that actually fits your family and your budget. No pressure, no jargon. Talk soon.",
+    SHOW_ADVISOR_PHOTO: true,
+    ADVISOR_PHOTO: "lucia.jpg",
+
+    META_PIXEL_ID: "",
+    GA_ID: ""
+  };
+</script>
+<!-- ===================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF7F0;--panel:#FFFFFF;--panel-2:#F4EFE3;
+    --ink:#16130C;--ink-2:#221D12;
+    --gold:#C79A3A;--gold-2:#E3BE5F;--gold-d:#A87E24;
+    --gold-tint:rgba(199,154,58,0.12);--gold-glow:rgba(199,154,58,0.34);
+    --text:#1C190F;--text-2:#5C5646;--text-3:#8C846F;
+    --border:rgba(30,24,10,0.10);--border-strong:rgba(30,24,10,0.20);
+    --radius:16px;--grad:linear-gradient(135deg,#C79A3A 0%,#E3BE5F 100%);
+    --glow:0 22px 54px -24px var(--gold-glow);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:'Poppins',sans-serif}
+  a{color:inherit}
+
+  header{width:100%;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+  .hdr-inner{max-width:1080px;margin:0 auto;padding:13px 22px;display:flex;align-items:center;justify-content:center}
+  .logo img{height:56px;width:auto;display:block}
+  .logo .fallback{display:none;font-family:'Poppins';font-weight:800;font-size:24px;color:var(--gold-d)}
+
+  .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;padding:clamp(46px,7vw,70px) 22px clamp(90px,12vw,112px);text-align:center}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 460px at 50% 58%,rgba(227,190,95,0.13),transparent 70%);pointer-events:none}
+  .hero-inner{position:relative;max-width:680px;margin:0 auto}
+  .badge{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;background:rgba(199,154,58,0.16);border:1px solid rgba(227,190,95,0.4);display:flex;align-items:center;justify-content:center;animation:pop .5s cubic-bezier(.2,.8,.2,1) both}
+  .badge svg{width:33px;height:33px;stroke:var(--gold-2);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  @keyframes pop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+  .hero .eyebrow{font-family:'Poppins';font-weight:700;font-size:12.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-2)}
+  .hero h1{font-weight:800;font-size:clamp(32px,5.6vw,50px);line-height:1.05;letter-spacing:-0.03em;margin-top:12px}
+  .hero h1 .a{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:rgba(255,255,255,0.8);font-size:clamp(15.5px,2.2vw,18px);line-height:1.66;max-width:520px;margin:16px auto 0}
+  .hero p b{color:#fff;font-weight:600}
+
+  .stage{max-width:680px;margin:-80px auto 0;padding:0 22px;position:relative;z-index:5}
+  .confirm-cta{display:flex;gap:18px;align-items:center;background:var(--panel);border:1px solid rgba(199,154,58,0.34);border-radius:20px;padding:24px 26px;box-shadow:0 0 0 1px rgba(199,154,58,0.1),0 24px 70px -26px rgba(199,154,58,0.4),0 30px 70px -44px rgba(30,24,10,0.4)}
+  .confirm-cta .ico{width:50px;height:50px;flex:none;border-radius:13px;background:var(--gold-tint);color:var(--gold-d);display:flex;align-items:center;justify-content:center}
+  .confirm-cta .ico svg{width:25px;height:25px}
+  .confirm-cta h3{font-family:'Poppins';font-weight:800;font-size:clamp(17px,2.4vw,20px);letter-spacing:-0.01em;margin-bottom:5px}
+  .confirm-cta p{color:var(--text-2);font-size:14.5px;line-height:1.55}
+
+  .advisor{max-width:680px;margin:clamp(38px,5vw,52px) auto 0;padding:0 22px}
+  .adv-eyebrow{text-align:center;color:var(--gold-d);font-family:'Poppins';font-weight:700;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px}
+  .adv-card{border:1px solid var(--border);background:var(--panel);border-radius:20px;padding:30px 28px;text-align:center;box-shadow:0 10px 30px -20px rgba(30,24,10,0.25)}
+  .adv-card.has-photo{display:flex;gap:26px;align-items:center;text-align:left}
+  .adv-photo{width:186px;height:186px;flex:none;border-radius:16px;object-fit:cover;object-position:center 26%;border:1px solid var(--border);background:var(--panel-2)}
+  .adv-name{font-family:'Poppins';font-weight:800;font-size:clamp(20px,3vw,24px);letter-spacing:-0.02em;line-height:1.15}
+  .adv-title{color:var(--gold-d);font-family:'Poppins';font-weight:700;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;margin-top:7px}
+  .adv-proof{color:var(--text-3);font-size:13px;margin-top:11px;line-height:1.55}
+  .adv-bio{color:var(--text-2);font-size:14.5px;line-height:1.68;margin:14px auto 0;max-width:520px}
+  .adv-card.has-photo .adv-bio{margin-left:0;margin-right:0}
+
+  .sec{max-width:900px;margin:clamp(46px,6vw,58px) auto 0;padding:clamp(44px,6vw,54px) 22px 0;border-top:1px solid var(--border)}
+  .sec-h{text-align:center;font-family:'Poppins';font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:-0.02em;line-height:1.12}
+  .sec-sub{text-align:center;color:var(--text-2);font-size:15px;line-height:1.6;max-width:520px;margin:12px auto 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+  .step{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);padding:26px 22px;box-shadow:0 6px 18px -14px rgba(30,24,10,0.2)}
+  .step .snum{width:36px;height:36px;border-radius:11px;background:var(--gold-tint);color:var(--gold-d);display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;font-size:15px;margin-bottom:15px}
+  .step h3{font-family:'Poppins';font-weight:700;font-size:17px;margin-bottom:8px}
+  .step p{color:var(--text-2);font-size:14px;line-height:1.6}
+  .reassure{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:30px;color:var(--text-2);font-size:14px}
+  .reassure span{display:inline-flex;align-items:center;gap:8px}
+  .reassure svg{width:16px;height:16px;color:var(--gold-d);flex:none}
+
+  footer{background:var(--ink-2);color:rgba(255,255,255,0.65);font-size:12.5px;line-height:1.7;margin-top:clamp(40px,5vw,52px)}
+  .foot-inner{max-width:1000px;margin:0 auto;padding:38px 22px;text-align:center}
+  .foot-brand{font-family:'Poppins';font-weight:700;color:#fff;font-size:15px;letter-spacing:0.02em}
+  .foot-tag{color:var(--gold-2);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;margin-top:5px}
+  .foot-line{margin-top:16px}
+  .foot-legal{margin-top:6px;color:rgba(255,255,255,0.45)}
+  .foot-links{margin-top:16px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .foot-links a{color:rgba(255,255,255,0.6);text-decoration:none}
+  .foot-links a:hover{color:#fff}
+
+  @media (max-width:640px){
+    .logo img{height:48px}
+    .steps{grid-template-columns:1fr}
+    .stage{margin-top:-72px}
+    .confirm-cta{flex-direction:column;text-align:center;gap:14px}
+    .adv-card.has-photo{flex-direction:column;text-align:center}
+    .adv-card.has-photo .adv-bio{margin-left:auto;margin-right:auto}
+    .adv-photo{width:150px;height:150px}
+  }
+</style>
+</head>
+<body>
+
+<header><div class="hdr-inner">
+  <div class="logo"><img id="logo-img" alt="DCW Financial" src=""><span class="fallback">DCW Financial</span></div>
+</div></header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <div class="eyebrow">You're booked</div>
+    <h1 id="hero-title">Your Call Is <span class="a">Locked In.</span></h1>
+    <p>Check your email for the confirmation and details. Your DCW Financial advisor will speak with you at the time you picked. <b>Talk soon.</b></p>
+  </div>
+</section>
+
+<div class="stage">
+  <div class="confirm-cta">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+    <div>
+      <h3>Check your email</h3>
+      <p>We just sent your confirmation with the date, time, and everything you need. Add it to your calendar so you don't miss it.</p>
+    </div>
+  </div>
+</div>
+
+<div class="advisor">
+  <div class="adv-eyebrow">&lt; Who you'll be talking to &gt;</div>
+  <div class="adv-card" id="adv-card">
+    <img class="adv-photo" id="adv-photo" alt="" style="display:none">
+    <div class="adv-body">
+      <div class="adv-name" id="adv-name"></div>
+      <div class="adv-title" id="adv-title"></div>
+      <div class="adv-proof" id="adv-proof"></div>
+      <p class="adv-bio" id="adv-bio"></p>
+    </div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="sec-h">How To Get The Most From Your Call</div>
+  <div class="sec-sub">Three quick things so the call is worth your time.</div>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><h3>Add it to your calendar</h3><p>Use the confirmation email to save the call, and watch for a reminder before you talk.</p></div>
+    <div class="step"><div class="snum">2</div><h3>Be somewhere you can talk</h3><p>It's a quick call, about 15 minutes. Pick a quiet spot where you can speak freely.</p></div>
+    <div class="step"><div class="snum">3</div><h3>Think about your family</h3><p>No prep needed. Just have a rough idea of who depends on you and what you'd want protected.</p></div>
+  </div>
+  <div class="reassure">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>About 15 minutes</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>100% free</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>No obligation</span>
+  </div>
+</section>
+
+<footer><div class="foot-inner">
+  <div class="foot-brand">DCW Financial Inc</div>
+  <div class="foot-tag">Creating Your Legacy</div>
+  <div class="foot-line">AMF Licence #179631 &nbsp;&middot;&nbsp; AMF Firm Registration #608808</div>
+  <div class="foot-legal">&copy; <span id="yr">2026</span> DCW Financial Inc. All rights reserved.</div>
+  <div class="foot-links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){
+  "use strict";
+  var C=window.DCW_CONFIG||{};
+  var li=document.getElementById('logo-img');
+  if(C.LOGO_URL){ li.src=C.LOGO_URL; } li.onerror=function(){ li.style.display='none'; document.querySelector('.logo .fallback').style.display='inline-block'; }; if(!C.LOGO_URL){ li.onerror(); }
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  if(C.META_PIXEL_ID){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init',C.META_PIXEL_ID); fbq('track','PageView'); fbq('track','Schedule');
+  }
+  if(C.GA_ID){ var g=document.createElement('script'); g.async=true; g.src='https://www.googletagmanager.com/gtag/js?id='+C.GA_ID; document.head.appendChild(g); window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments);}; gtag('js',new Date()); gtag('config',C.GA_ID); gtag('event','booking_scheduled'); }
+
+  var params=new URLSearchParams(window.location.search);
+  var first=(params.get('first_name')||'').trim();
+  if(first){ var fn=first.charAt(0).toUpperCase()+first.slice(1); document.getElementById('hero-title').innerHTML='You’re Booked, '+fn+'. <span class="a">See You Soon.</span>'; }
+
+  (function(){
+    function put(id,val){ var el=document.getElementById(id); if(!el) return; if(val){ el.textContent=val; } else { el.style.display='none'; } }
+    put('adv-name', C.ADVISOR_NAME); put('adv-title', C.ADVISOR_TITLE); put('adv-proof', C.ADVISOR_PROOF); put('adv-bio', C.ADVISOR_BIO);
+    if(C.SHOW_ADVISOR_PHOTO && C.ADVISOR_PHOTO){
+      var ph=document.getElementById('adv-photo'); ph.onerror=function(){ ph.style.display='none'; document.getElementById('adv-card').classList.remove('has-photo'); };
+      ph.alt=C.ADVISOR_NAME||''; ph.src=C.ADVISOR_PHOTO; ph.style.display=''; document.getElementById('adv-card').classList.add('has-photo');
+    }
+  })();
+})();
+</script>
+</body>
+</html>
