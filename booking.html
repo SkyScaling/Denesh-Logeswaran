@@ -108,7 +108,7 @@
   .reassure span{display:inline-flex;align-items:center;gap:8px}
   .reassure svg{width:16px;height:16px;color:var(--gold-d);flex:none}
 
-  .faq{max-width:720px;margin:0 auto;padding:0 22px;display:flex;flex-direction:column;gap:12px}
+  .faq{max-width:760px;margin:34px auto 0;padding:0;display:flex;flex-direction:column;gap:12px}
   .fq{border:1px solid var(--border);background:var(--panel);border-radius:14px;padding:20px 22px;box-shadow:0 4px 14px -12px rgba(30,24,10,0.2)}
   .fq h4{font-family:'Poppins';font-weight:700;font-size:16px;margin-bottom:7px;display:flex;gap:10px;align-items:flex-start}
   .fq h4 .qm{color:var(--gold-d);flex:none}
@@ -125,7 +125,10 @@
 
   @media (max-width:640px){
     .logo img{height:48px}
-    .steps{grid-template-columns:1fr}
+    .sec{margin-top:30px;padding-top:30px}
+    .sec-sub{margin-top:9px}
+    .steps{grid-template-columns:1fr;margin-top:22px}
+    .faq{margin-top:22px}
     .stage{margin-top:-72px}
     .adv-card.has-photo{flex-direction:column;text-align:center}
     .adv-card.has-photo .adv-bio{margin-left:auto;margin-right:auto}
@@ -193,7 +196,7 @@
 <section class="sec">
   <div class="sec-h">Questions, <span style="color:var(--gold-d)">Answered</span></div>
   <div class="sec-sub">Everything people usually want to know before the call.</div>
-  <div class="faq" style="margin-top:34px">
+  <div class="faq">
     <div class="fq"><h4><span class="qm">Q.</span>Is this really free?</h4><p>Yes. The call costs you nothing and there's no obligation. Booking a time doesn't sign you up for anything.</p></div>
     <div class="fq"><h4><span class="qm">Q.</span>Will I be pressured to buy?</h4><p>No. Your advisor's job is to show you your options in plain language. If it's a fit, great. If not, no hard feelings.</p></div>
     <div class="fq"><h4><span class="qm">Q.</span>How long does the call take?</h4><p>About 15 minutes, on the phone. Quick and to the point, at a time you pick.</p></div>
