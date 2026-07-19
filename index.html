@@ -68,6 +68,11 @@
   .card{background:var(--panel);border:1px solid rgba(199,154,58,0.34);border-radius:22px;box-shadow:0 0 0 1px rgba(199,154,58,0.12),0 24px 80px -22px rgba(199,154,58,0.42),0 34px 74px -44px rgba(30,24,10,0.4);padding:clamp(24px,4vw,38px)}
   .intro-q-lab{font-family:'Poppins';font-weight:800;font-size:clamp(20px,3.6vw,27px);line-height:1.16;letter-spacing:-0.02em;text-align:center}
   .intro-q-sub{text-align:center;color:var(--text-3);font-size:13.5px;margin-top:9px}
+  .advisor-badge{display:flex;align-items:center;justify-content:center;gap:13px;margin:18px auto 0;padding:0 10px}
+  .advisor-badge img{width:66px;height:66px;border-radius:50%;object-fit:cover;object-position:center 24%;border:2px solid var(--gold);box-shadow:0 6px 16px -8px rgba(199,154,58,0.55)}
+  .ab-txt{display:flex;flex-direction:column;line-height:1.25;text-align:left}
+  .ab-name{font-family:'Poppins';font-weight:700;font-size:14.5px;color:var(--text)}
+  .ab-role{font-size:12.5px;color:var(--text-3);margin-top:2px}
 
   .qhead{margin-bottom:8px}
   .qcount{font-family:'Poppins';font-weight:700;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3)}
@@ -137,9 +142,9 @@
   .logo-marquee::before{left:0;background:linear-gradient(90deg,#16130C,rgba(22,19,12,0))}
   .logo-marquee::after{right:0;background:linear-gradient(270deg,#16130C,rgba(22,19,12,0))}
   .logo-track{display:flex;align-items:center;width:max-content;will-change:transform;backface-visibility:hidden;-webkit-backface-visibility:hidden}
-  .logo-item{flex:none;padding:0 clamp(24px,4vw,46px)}
-  .logo-item img{height:clamp(26px,3.4vw,34px);width:auto;display:block;opacity:0.82;filter:brightness(1.15)}
-  @media (prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.logo-item{padding:10px 18px}}
+  .logo-item{flex:none;width:clamp(132px,16.5vw,172px);height:clamp(48px,5.8vw,60px);display:flex;align-items:center;justify-content:center}
+  .logo-item img{max-width:80%;max-height:100%;width:auto;height:auto;display:block;object-fit:contain;filter:brightness(0) invert(1);opacity:0.82}
+  @media (prefers-reduced-motion:reduce){.logo-track{flex-wrap:wrap;justify-content:center;width:auto}.logo-item{padding:7px}}
 
   .sec{max-width:1000px;margin:0 auto;padding:clamp(38px,5vw,52px) 22px clamp(46px,6.5vw,68px)}
   .sec-h{text-align:center;font-family:'Poppins';font-weight:800;font-size:clamp(26px,4.4vw,38px);letter-spacing:-0.02em;line-height:1.12}
@@ -199,6 +204,10 @@
       <div class="intro-q-lab">What type of life insurance are you looking for?</div>
       <div class="intro-q-sub">Tap one to get started. It only takes a minute.</div>
       <div class="opts" id="intro-opts"></div>
+    </div>
+    <div class="advisor-badge">
+      <img src="lucia.jpg" alt="Lucia Medina">
+      <div class="ab-txt"><span class="ab-name">Lucia Medina</span><span class="ab-role">Your Licensed Advisor, DCW Financial</span></div>
     </div>
     <p class="counter" id="counter" style="display:none">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -291,15 +300,17 @@
   if(CFG.COUNTER_TEXT){ document.getElementById('counter').style.display='flex'; document.getElementById('counter-txt').textContent=CFG.COUNTER_TEXT; }
 
   (function(){
-    var LG=['manulife','sun-life','canada-life','ia-financial','desjardins','beneva'];
-    var NM={ 'manulife':'Manulife','sun-life':'Sun Life','canada-life':'Canada Life','ia-financial':'iA Financial','desjardins':'Desjardins','beneva':'Beneva' };
-    var track=document.getElementById('logo-track'); if(!track) return; var html='';
-    for(var pass=0;pass<4;pass++){ LG.forEach(function(k){ html+='<div class="logo-item"><img src="'+k+'.png" alt="'+NM[k]+'" decoding="async"></div>'; }); }
-    track.innerHTML=html;
+    var LG=['manulife','ia-financial','desjardins','empire-life','assumption-life','canada-protection-plan','ivari','foresters','humania','edge-benefits','uv-insurance'];
+    var NM={'manulife':'Manulife','ia-financial':'iA Financial Group','desjardins':'Desjardins','empire-life':'Empire Life','assumption-life':'Assumption Life','canada-protection-plan':'Canada Protection Plan','ivari':'ivari','foresters':'Foresters','humania':'Humania Assurance','edge-benefits':'Edge Benefits','uv-insurance':'UV Insurance'};
+    var track=document.getElementById('logo-track'); if(!track) return;
+    function chip(k){ return '<div class="logo-item"><img src="'+k+'.png" alt="'+NM[k]+'" decoding="async"></div>'; }
 
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+      var one=''; LG.forEach(function(k){ one+=chip(k); }); track.innerHTML=one;
       track.style.flexWrap='wrap'; track.style.width='auto'; track.style.justifyContent='center'; return;
     }
+
+    var html=''; for(var pass=0;pass<4;pass++){ LG.forEach(function(k){ html+=chip(k); }); } track.innerHTML=html;
 
     var SPEED=70, offset=0, last=null, half=0, raf=null;
     function measure(){ var seam=track.children[LG.length]; half = seam ? seam.offsetLeft : track.scrollWidth/4; }
